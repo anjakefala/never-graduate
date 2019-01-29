@@ -1,0 +1,7 @@
+- shell 
+    - https://github.com/tokenrove/build-your-own-shell
+- operating system 
+    - https://os.phil-opp.com/
+    - kernel
+- compilers (forth + forth compiler)
+- tcp/ip and networking
