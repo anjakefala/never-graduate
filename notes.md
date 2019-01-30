@@ -174,6 +174,7 @@ if len(set(matrix_shapes)) > 1:
 ## python: easier classes
 resource: https://treyhunner.com/easier-classes/#/
 - `__repr__` allows you to ensure comparibility (does this equal this?)
+    - NOTE: there is both __str__ and __repr__, look up the difference between them
     - you can turn how the class was instantiated into a string
     - for e.g.
     ```
