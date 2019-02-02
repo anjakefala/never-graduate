@@ -156,6 +156,11 @@ flattened = [
 
 - note that you can also do `set` and `dictionary` comprehensions
 
+- whenever you see a list comprehension that loops over something and does not filter anything or change any item, but just makes a list
+    - e.g. `rows = [line for line in reader]`
+- you can replace it with the list constructor
+    - `rows = list(rdr)
+
 ## cute python tricks
 - we want to ensure that each ith row in many different matrices is the same length
 - we use a set bc set items are unique
@@ -209,12 +214,65 @@ class Point:
         return hash(tuple(self))
 ```
 
-# python: fix_csv.py (command line arguments, file handling, csv handling)
+# python: command line arguments
 
-- to grab command line arguments use the `sys` module
+- to grab command line arguments you can use the `sys` module
     - the command line arguments are held in a list: `sys.argv`. At index `0` is the name of the program
 
 - if you use list unpacking, then you can assert for the number of items passed through the command line
+    - `old_file, new_file = sys.argv[1:]
 
 - `sys.maxsize` provides the largest positive integer supported by the platform -> thus the maximum size lists, strings, dicts, and many other containers can have
 
+- to make the command-line functionality more robust, use `argparse` from the standard library
+    - https://docs.python.org/3/howto/argparse.html
+
+```
+from argparse import ArgumentParser
+
+parser = ArgumentParser()
+parser.add_argument('input_filename')
+parser.add_argument('output_filename')
+args = parser.parse_args()
+
+with open(args.old_filename) as fp:
+```
+
+- why argparse is the better choice: https://www.python.org/dev/peps/pep-0389/#why-aren-t-getopt-and-optparse-enough
+
+- the above example shows how to use argparse to parse two positional mandatory arguments
+
+- to add optional arguments, with default values
+
+```
+parser.add_argument('--in-delimiter', dest='delimiter', default='|')
+```
+
+# python: csv reading and writing
+- python comes with a `csv` module
+- `rdr = csv.reader(fp, delimiter)`
+    - `rows = [line for line in rdr]`
+- `writer = csv.writer(fp)`
+    - `writer.writerows(rows)`
+- csv module works for any delimited data files, not just comma-delimited files
+- the writer's writerows method takes an iterable and the reader object *is* an iterable
+
+- to automatically attempt to detect the format of an input file, use the `csv` module's `Sniffer` class
+
+```
+dialect = csv.Sniffer().sniff(fp_read())
+fp.seek(0)
+```
+- this entails sniffing the entire csv file and then seeking back to the beginning of the file so that you can start reading it again -> this is bc files are iterators
+
+# python: CRLF vs LF
+- python automatically takes all LF endings (`\n`) and converts them to CRLF endings (`\r\n`) on Windows systems
+
+# python: file parsing
+- if you use `with` statements, you do not need to remember to close your fp afterwards
+`with open(filename, newline='') as fp:`
+- be careful with nested `with` statements, where one is a reader, and the other a writer; if you provide the same filename for both input and output, you may get weird results bc you are writing to a file as you are reading it.
+- files are iterators, whichs means they are stateful -> they keep track of where we are on them as we loop over them
+
+# python: keyword (named) arguments in python - how to use them
+- 
