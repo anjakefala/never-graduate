@@ -275,4 +275,40 @@ fp.seek(0)
 - files are iterators, whichs means they are stateful -> they keep track of where we are on them as we loop over them
 
 # python: keyword (named) arguments in python - how to use them
-- 
+source: https://treyhunner.com/2018/04/keyword-arguments-in-python/
+- unlike many other programming languages, Python knows the names of the arguments functions accept
+- functions can be called with a mix of positional and named arguments
+- when we use keyword arguments
+    - we can often leave out arguments that have default values
+    - we can rearrange arguments in a way that makes them more readable
+    - we call arguments by their names to make it more clear what they represent
+- Python has a number of functions that take an unlimited number of positional arguments. These functions sometimes have arguments that can be provided to customise their functionality. Those arguments must be provided as named arguments to distinguish them from the unlimited positional arguments. 
+- e.g. `print('comma', 'separated', 'words', sep=', ')
+
+- to create a function that accepts any number of positional arguments with some keyword-only arguments -> use the `*` operator to capture all the positional arguments
+
+```
+def product (*numbers, initial=1):
+    total = initial
+    for n in numbers:
+        total *= n
+    return total
+```
+
+- `*numbers` -> captures all positional arguments given to the `product` function into a tuple which the `numbers` variable points to
+
+- python allows functions to capture any keyword arguments provided to them using the `**` operator when defining the function
+
+```
+def format_attributes(**attributes):
+    '''Return a string of comma-separated key-value pairs.'''
+    return ", ".join(
+        f"{param}: value"
+        for param, value in attributes.items()
+    )
+
+- we can also pass arbitrary keyword arguments into our function using the `**` operator to unpack our dictionary items into keyword arguments in our function call
+    - `items = {'name': 'Trey', 'website': 'http://treyhunner.com'}
+    - `format_attributes(**items)`
+
+- since python3.6 functions always preserve the order of the keyword arguments passed to them.
