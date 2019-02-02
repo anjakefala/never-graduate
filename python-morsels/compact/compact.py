@@ -2,9 +2,12 @@ def compact(sequence):
     if not sequence:
         return sequence
 
-    new_iter = [sequence[0]]
+    if type(sequence) is list:
+        sequence = iter(sequence)
 
-    for val in sequence[1:]:
+    new_iter = [next(sequence)]
+
+    for val in sequence:
         if val != new_iter[-1]:
             new_iter.append(val)
         else:
