@@ -208,3 +208,13 @@ class Point:
     def __hash__(self):
         return hash(tuple(self))
 ```
+
+# python: fix_csv.py (command line arguments, file handling, csv handling)
+
+- to grab command line arguments use the `sys` module
+    - the command line arguments are held in a list: `sys.argv`. At index `0` is the name of the program
+
+- if you use list unpacking, then you can assert for the number of items passed through the command line
+
+- `sys.maxsize` provides the largest positive integer supported by the platform -> thus the maximum size lists, strings, dicts, and many other containers can have
+
