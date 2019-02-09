@@ -5,12 +5,12 @@ def compact(sequence):
     if type(sequence) is list:
         sequence = iter(sequence)
 
-    new_iter = [next(sequence)]
+    last_value = next(sequence)
+    yield last_value
 
     for val in sequence:
-        if val != new_iter[-1]:
-            new_iter.append(val)
+        if val != last_value:
+            last_value = val
+            yield val
         else:
             continue
-
-    return new_iter
