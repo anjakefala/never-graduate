@@ -3,10 +3,12 @@ def get_earliest(*dates):
     earliest = None
 
     for date in dates:
+
         date = {
                     key:value
                     for key, value in zip(['month', 'day', 'year'], date.split('/'))
                 }
+
         if earliest is None:
             earliest = date
             continue
