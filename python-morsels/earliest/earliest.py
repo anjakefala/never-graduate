@@ -11,23 +11,14 @@ def get_earliest(*dates):
             earliest = date
             continue
 
-        if int(date['year']) < int(earliest['year']):
-            earliest = date
-            continue
-        elif int(date['year']) > int(earliest['year']):
-            continue
-        else:
-            if int(date['month']) < int(earliest['month']):
+        for key in ['year', 'month', 'day']:
+            if int(date[key]) < int(earliest[key]):
                 earliest = date
-                continue
-            elif int(date['month']) > int(earliest['month']):
-                continue
+                break
+            elif int(date[key]) > int(earliest[key]):
+                break
             else:
-                if int(date['day']) < int(earliest['day']):
-                    earliest = date
-                    continue
-                else:
-                    continue
+                continue
 
 
     return '/'.join([earliest['month'], earliest['day'], earliest['year']])
