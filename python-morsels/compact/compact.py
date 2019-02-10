@@ -2,15 +2,9 @@ def compact(sequence):
     if not sequence:
         return sequence
 
-    if type(sequence) is list:
-        sequence = iter(sequence)
-
-    last_value = next(sequence)
-    yield last_value
+    previous = object()
 
     for val in sequence:
-        if val != last_value:
-            last_value = val
+        if val != previous:
             yield val
-        else:
-            continue
+            previous = val
