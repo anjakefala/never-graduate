@@ -1,16 +1,16 @@
-def get_earliest(*date_list):
+def get_earliest(*dates):
 
-    dates = [
-                {
+    earliest = None
+
+    for date in dates:
+        date = {
                     key:value
-                    for key, value in zip(['month', 'day', 'year'], date_str.split('/'))
+                    for key, value in zip(['month', 'day', 'year'], date.split('/'))
                 }
-                for date_str in date_list
-            ]
+        if earliest is None:
+            earliest = date
+            continue
 
-    earliest = dates[0]
-
-    for date in dates[1:]:
         if int(date['year']) < int(earliest['year']):
             earliest = date
             continue
