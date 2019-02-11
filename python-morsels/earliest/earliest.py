@@ -6,21 +6,14 @@ def get_earliest(*dates):
 
         date = {
                     key:value
-                    for key, value in zip(['month', 'day', 'year'], date.split('/'))
+                    for key, value in zip(['m', 'd', 'y'], date.split('/'))
                 }
 
         if earliest is None:
             earliest = date
             continue
 
-        for key in ['year', 'month', 'day']:
-            if int(date[key]) < int(earliest[key]):
-                earliest = date
-                break
-            elif int(date[key]) > int(earliest[key]):
-                break
-            else:
-                continue
+        if (earliest['y'], earliest['m'], earliest['d']) >= (date['y'], date['m'], date['d']):
+            earliest = date
 
-
-    return '/'.join([earliest['month'], earliest['day'], earliest['year']])
+    return '/'.join([earliest['m'], earliest['d'], earliest['y']])
