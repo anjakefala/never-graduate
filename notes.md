@@ -1,4 +1,3 @@
-# 2019-01-29
 ## python looping`
 resource: https://treyhunner.com/2016/04/how-to-loop-with-indexes-in-python/
 - python's `for` loop is really a `foreach` loop
@@ -437,3 +436,14 @@ def print_each(iterable):
 
 - the `for` loop is automatically doing what we were doing manually: calling `iter` to get an iterator and then calling `next` over and over until a `StopIteration` exception is raised
 - the iterator protocol is used by `for` loops, tuple unpacking, and all built-in functions that work on generic iterables.
+
+# python: dates 101
+
+```
+datestr_1 = "06/20/1991"
+datestr_2 = "10/02/2019"
+date1 = datetime.strptime(datestr_1, "%m/%d/%Y")
+date2 = datetime.strptime(datestr_2, "%m/%d/%Y")
+if date1 < date2:
+    print(' you have aged!')
+```
