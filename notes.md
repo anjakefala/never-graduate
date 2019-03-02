@@ -447,3 +447,67 @@ date2 = datetime.strptime(datestr_2, "%m/%d/%Y")
 if date1 < date2:
     print(' you have aged!')
 ```
+
+# basecs: bits, bytes, building with binary
+- source: https://medium.com/basecs/bits-bytes-building-with-binary-13cb4289aafa
+- computers run on binary
+    - somehow what we type into our machines gets converted (compiled) down to binary
+    - this happens through several layers of abstraction
+- the switches and circuits that are the building blocks of computers today are effectively representations of binary
+- **bit** -> single digit in binary
+    - a bit can only ever be comprised of either a `0` or a `1`
+- **byte** -> a stringing together of 8 bits
+    - *a unit of computer memory*
+    - a single byte can represent 256 different combinations
+    - two bytes can represent 65536 different combinations
+    - just 16 transistors can process and interpret a ton of information
+- bits are important because different computers can process a different number of bits at a time
+    - e.g. 8-bit machine breaks up and processes 8 bits at a time
+    - the number of bits that are processed at a time are known as a **computer word**
+        - bits are the 'letters' that make up a computer word
+    - most computers now have a word length of 32 or 64 bits
+- 1 byte -> 8 bits -> one character
+- 1 kilobyte (kB) -> 1024 bytes -> 8192 bits -> 1 page
+- 1 megabyte (mb) -> 1024 kb -> 8388608 bytes -> 1048576 -> a low quality picture
+
+- if you think back to when computers used to take up entire rooms (imagine how big the circuits and transistors were back then!) and how far they have progressed and how much they have changed since then, it is rather jaw dropping
+
+# basecs: hexes and other magical numbers
+- source: https://medium.com/basecs/hexs-and-other-magical-numbers-9785bc26b7ee
+- is there a better way to represent characters and words before they get compiled down to binary by the computer?
+- **encoding** is a standardised way of translating between two things
+    - to use bits to represent anything at all besides bits, we need rules
+    - we need to convert a sequence of bits into something like letters, numbers and pictures using an encoding scheme
+- ASCII encoding is a set of rules that allows us to translate certain characters in decimal numbers
+    - there are 95 'human readable' characters that ASCII lets you translate between: the numbers 0-9, the English alphabet (the letters a-z in lowercase and in uppercase), a few different punctuation marks, math symboles, spaces, tabs, backspaces, deletes, new lines, and other special characters
+    - the ASCII encoding scheme allows for 128 possible 'translations', which means that everything in ASCII, when converted to decimals, has to fall between the numbers 0 and 255
+    - each character is represented in binary with 8 digits -> that is, each requires 8 bits of information
+- the extended ASCII table added another 128 possibilities to the original ASCII encoding schema
+- not everything is encoded using ASCII but all encoding schemes allow us to simplify how we convert between characters and binary by simply adding rules as a layer of abstraction right in between
+
+- **hexadecimals** (**base 16**) are another abstraction that is commonly used in computer science
+- the digits are: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, E, F
+- in order to represent the decimal number **205** in binary (base 2), we need 8 digits. but to represent it in hexadecimals (base 16), we only need 2 digits.
+    - *the higher the base, the fewer place values you need in order to represent a number*
+- if we can represent a byte with fewer digits, we can contain a lot more potential pieces of information using a relatively small amount of space
+- a **hex** is used to specify colours on a website, and can be used inline on HTML of a webpage or more commonly within the CSS (the stylesheet) of a webpage
+- we can also specify the colour of something on a webpage or application by using the **rgb colour model**
+- computer always specify colours using amounts of red, green, and blue -> they add together however much red, green, and blue we specify, and the combinations of those three colours will render whatever colour we want on the screen
+
+black -> hex representation: #000000
+-> rgb representation: rgb(0, 0, 0)
+white -> #FFFFFF
+
+- each consode is consecutive pair of digits in the **hex** code is converted into a decimal in order to represent it in **rgb format**
+- a single hex code contains an entire colour value, but only takes up 3 bytes of information
+- in just 6 hexadecimal digits, we can account for over 16 milion possible colours in the spectrum
+
+- another place you might have encountered hexadecimals is in **magic debug values** or **hexspeak**, which are really nothing more than hexadecimals that are written (or allocated) to memory when a program runs
+- the most common use case for magic debug values are when a program crashes; these hexadecimals are so commonly used by developers that they have become 'reserved' - they are only ever used to indicate to the program who is running the code 'something went wrong'
+    - https://en.wikipedia.org/wiki/Magic_number_%28programming%29#Magic_debug_values
+
+- hexadecimals can also be found in the newest protocol version's formatting of IP addresses
+    - the **Internet Protocol version 6 (IPv6)** way of representing an IP address is through eight groups of our hexadecimal digits
+
+# basecs: what every programmer absolutely, positively needs to know about encodings and character sets to work with text
+- source: http://kunststube.net/encoding/
