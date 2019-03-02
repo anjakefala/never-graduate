@@ -29,14 +29,12 @@ class TailTests(unittest.TestCase):
         self.assertEqual(tail((1, 2, 3), 3), [1, 2, 3])
 
     # To test the Bonus part of this exercise, comment out the following line
-    @unittest.expectedFailure
     def test_negative_n(self):
         nums = [1, 2, 3, 4]
         self.assertEqual(tail(nums, -1), [])
         self.assertEqual(tail((), -9), [])
 
     # To test the Bonus part of this exercise, comment out the following line
-    @unittest.expectedFailure
     def test_iterator(self):
         nums = (n**2 for n in [1, 2, 3, 4])
         self.assertEqual(tail(nums, -1), [])
