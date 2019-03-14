@@ -1,0 +1,18 @@
+- read The Rust Programming language book
+    - watch into rust http://intorust.com/ at appropriate points
+    - do all exercises -> https://github.com/focusaurus/rust-basics
+    - do the rustlings exercises at appropriate book points
+        - https://github.com/rustlings/rustlings
+    - do the Rust crash course exercises as they are published
+- follow along with the CIS 198 exercises and do them at appropriate book points
+    - Chapter 1: Homework 0
+    - Chapters 2, 3: Homework 1
+    - Chapters 4, 5: Homework 2
+    - Chapters 6, 7, 8, 9, 10: Homework 3
+    - Chapters 11, 12, 13: Homework 4
+    - Chapters 14, 15: Homework 5, 6
+    - Chapter 16: Homework 7
+- Implement the unix hexdump utility in rust
+- do the http://cglab.ca/~abeinges/blah/too-many-lists/book/
+
+- Final project is to write a shell -> follow julian's tutorial
