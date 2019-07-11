@@ -1,10 +1,11 @@
 import string
 
 def letters_in(word):
+    excluded = list(string.punctuation) + [' ']
     return sorted(
             char
             for char in word.lower()
-            if char.isalpha()
+            if char not in excluded
         )
 
 def is_anagram(a, b):
