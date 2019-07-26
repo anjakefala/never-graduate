@@ -1,7 +1,4 @@
-def same(val):
-    return val
-
-def multimax(sequence, key=same):
+def multimax(sequence, key=lambda x: x):
     curr_max = []
     for i in sequence:
         if not curr_max:
